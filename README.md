@@ -116,12 +116,12 @@ This section explains how to use Virtusize SDK from a Flutter project via **plat
 ```gradle
 repositories {
     flatDir {
-        dirs 'libs'
+        dirs("libs")
     }
 }
 
 dependencies {
-    implementation(name: 'virtusizesdk-release', ext: 'aar')
+    implementation(files("libs/virtusizesdk-release.aar"))
 }
 ```
 3. Sync Gradle.
