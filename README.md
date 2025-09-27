@@ -46,6 +46,7 @@ virtusizesdk/build/outputs/aar/virtusizesdk-release.aar
 app/libs/virtusizesdk-release.aar
 ```
 (create the `libs` folder if it doesn’t exist)
+
 2. Add the following to your `build.gradle`:
 ```gradle
 repositories {
