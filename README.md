@@ -21,32 +21,43 @@ It can be integrated into any Android or Kotlin project via an `.aar` file, and 
 
 1. Open the SDK project in Android Studio.
 2. In the terminal, run:
-
+```
 ./gradlew assembleRelease
+```
+OR
+
+In Android Studio, go to:
+```
+Build > Make Module > :virtusizesdk
+```
 
 3. The generated `.aar` file will be located in:
-
+```
 virtusizesdk/build/outputs/aar/virtusizesdk-release.aar
+```
+4. Alternatively, you can use the generated `virtusizesdk-release.aar` file uploaded in this repository.
 
 ---
 
 ### 2. Include the `.aar` in your project
 
 1. Copy the `.aar` file into your app module’s `libs` folder:
-
+```
 app/libs/virtusizesdk-release.aar
-
+```
+(create the `libs` folder if it doesn’t exist)
 2. Add the following to your `build.gradle`:
-
+```gradle
 repositories {
     flatDir {
-        dirs 'libs'
+        dirs("libs")
     }
 }
 
 dependencies {
-    implementation(name: 'virtusizesdk-release', ext: 'aar')
+    implementation(files("libs/virtusizesdk-release.aar"))
 }
+```
 
 3. Sync Gradle. The SDK is now available in your project.
 
@@ -56,6 +67,7 @@ dependencies {
 
 ### Import the SDK
 
+```kotlin
 import com.ivanbautista.virtusizesdk.VirtusizeSDK
 
 ### Get Recommended Size
@@ -69,11 +81,12 @@ try {
 } catch (e: IllegalArgumentException) {
     println("Invalid input: ${e.message}")
 }
+```
 
 **Output:**
-
+```
 Recommended Size: M
-
+```
 ---
 
 ## API Reference
@@ -90,16 +103,16 @@ Recommended Size: M
 
 ## Flutter Integration
 
-This section explains how to use Virtusize SDK from a Flutter project via **platform channels**.
+This section explains how to use Virtusize SDK from a Flutter project via **platform channels**. You may run the flutter_demoapp for sample reference.
 
 ### 1. Add the `.aar` to Flutter Android Module
 
 1. Copy `virtusizesdk-release.aar` to the Flutter project’s Android `libs` folder:
-
+```
 <flutter_project>/android/app/libs/virtusizesdk-release.aar
-
+```
 2. Add it as a dependency in `android/app/build.gradle`:
-
+```gradle
 repositories {
     flatDir {
         dirs 'libs'
@@ -109,7 +122,7 @@ repositories {
 dependencies {
     implementation(name: 'virtusizesdk-release', ext: 'aar')
 }
-
+```
 3. Sync Gradle.
 
 ---
